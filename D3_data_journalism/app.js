@@ -57,7 +57,19 @@ d3.csv("data.csv").then(function(csvData) {
     .attr("fill", "green")
     .attr("opacity", ".4");
 
-    // Create axes labels
+    // Step 6: Add state abbreviations
+    var stateLabels = chartGroup.selectAll(null)
+    .data(csvData)
+    .enter()
+    .append("text");
+    stateLabels.text(function(d) {
+      return d.abbr;})
+      .attr("fill", "green")
+      .attr("opacity", ".4")
+      .attr("stroke", "black");
+
+    // Step 7: Create axes labels
+    // ==============================
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left + 40)
