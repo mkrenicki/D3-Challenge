@@ -1,5 +1,5 @@
 // @TODO: YOUR CODE HERE!
-// Modeled most of the structuring of my code based on excercise 16.3.9 we did in class
+// Modeled mostly off excercise 16.3.9 we did in class
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -56,4 +56,19 @@ d3.csv("data.csv").then(function(csvData) {
     .attr("r", "10")
     .attr("fill", "green")
     .attr("opacity", ".4");
+
+    // Create axes labels
+    chartGroup.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 40)
+      .attr("x", 0 - (height / 2))
+      .attr("dy", "1em")
+      .attr("class", "axisText")
+      .text("Smoking Rate (%)");
+    chartGroup.append("text")
+      .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+      .attr("class", "axisText")
+      .text("Age (yrs)");
+  }).catch(function(error) {
+    console.log(error);
 });
